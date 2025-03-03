@@ -1,6 +1,6 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { auth } from "@/lib/auth";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 interface Props {
   children: React.ReactNode;
