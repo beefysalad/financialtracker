@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next Basecode  | PTRCK",
-  description: "Fullstack basecode for Next.JS",
+  title: "Financial Tracking App  | PTRCK.DEV",
+  description: "App to track financial transactions",
 };
 
 export default function RootLayout({
