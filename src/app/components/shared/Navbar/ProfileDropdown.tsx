@@ -1,4 +1,4 @@
-import { ROUTES } from "@/app/common/constants/route-pages";
+"use client";
 import { APP_STRINGS } from "@/app/common/magic-strings";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -12,11 +12,20 @@ import {
 import { logOut } from "@/lib/actions";
 import { auth } from "@/lib/auth";
 import { getFirstLetter } from "@/lib/helper";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const ProfileDropdown = async () => {
-  const session = await auth();
-
+const ProfileDropdown = () => {
+  const { data: session } = useSession();
+  const handleClick = (text: string, location: string) => {
+    // if value is logout then it should call the logout function
+    if (text === APP_STRINGS.UI.PROFILE_DROPDOWN[2].text) {
+      logOut();
+    } else {
+      redirect(location);
+    }
+  };
   const showProfileDropdown = () => {
     if (!session) return <></>;
     return (
@@ -32,15 +41,16 @@ const ProfileDropdown = async () => {
         <DropdownMenuContent className='w-56'>
           <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link className='w-full' href={ROUTES.USER}>
-              {APP_STRINGS.UI.PROFILE_DROPDOWN.PROFILE}
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            {APP_STRINGS.UI.PROFILE_DROPDOWN.SETTINGS}
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={logOut}>Log out</DropdownMenuItem>
+          {APP_STRINGS.UI.PROFILE_DROPDOWN.map((item, idx) => (
+            <DropdownMenuItem
+              key={idx}
+              onClick={() => handleClick(item.text, item.location)}
+            >
+              <Link className='w-full' href={item.location}>
+                {item.text}
+              </Link>
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
       </DropdownMenu>
     );

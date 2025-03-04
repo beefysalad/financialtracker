@@ -1,5 +1,6 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { isUserLoggedIn } from "@/lib/helper";
+import ProfileDropdown from "./ProfileDropdown";
 
 export const Navbar = async () => {
   return (

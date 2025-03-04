@@ -13,19 +13,20 @@ import {
 import { logOut } from "@/lib/actions";
 import { getFirstLetter } from "@/lib/helper";
 import { ChevronUp } from "lucide-react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface IUser {
   name: string;
   image?: string | null;
 }
 const NavUser = ({ name, image }: IUser) => {
+  const router = useRouter();
   const handleClick = (text: string, location: string) => {
     // if value is logout then it should call the logout function
     if (text === APP_STRINGS.UI.PROFILE_DROPDOWN[2].text) {
       logOut();
     } else {
-      redirect(location);
+      router.push(location);
     }
   };
   return (

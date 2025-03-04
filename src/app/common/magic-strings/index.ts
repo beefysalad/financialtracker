@@ -37,7 +37,7 @@ export const APP_STRINGS = {
       {
         text: "Profile",
         icon: User,
-        location: ROUTES.ROOT, //replace with actual route when avaialble
+        location: ROUTES.USER,
       },
       {
         text: "Settings",
