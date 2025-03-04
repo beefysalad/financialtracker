@@ -25,11 +25,14 @@ export async function AppSidebar() {
             <SidebarGroupContent>
               <SidebarMenu>
                 {APP_STRINGS.UI.SIDEBAR_MENU.map((item) => (
-                  <SidebarMenuItem key={item.title}>
+                  <SidebarMenuItem key={item.title} className='mt-4'>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
+                      <a
+                        href={item.url}
+                        className='flex items-center gap-3 text-lg'
+                      >
+                        <item.icon className='scale-125' />
+                        <span className='text-md'>{item.title}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
