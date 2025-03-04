@@ -1,3 +1,14 @@
+import {
+  LogOut,
+  Settings,
+  User,
+  Calendar,
+  Home,
+  Inbox,
+  Search,
+} from "lucide-react";
+import { ROUTES } from "../constants/route-pages";
+
 export const APP_STRINGS = {
   UI: {
     COMMON: { EMAIL: "Email Address" },
@@ -22,11 +33,23 @@ export const APP_STRINGS = {
       EMAIL: "Email",
       PASSWORD: "Password",
     },
-    PROFILE_DROPDOWN: {
-      SETTINGS: "Settings",
-      PROFILE: "Profile",
-      LOGOUT: "Log out",
-    },
+    PROFILE_DROPDOWN: [
+      {
+        text: "Profile",
+        icon: User,
+        location: ROUTES.USER,
+      },
+      {
+        text: "Settings",
+        icon: Settings,
+        location: ROUTES.ROOT, //replace with actual route when avaialble
+      },
+      {
+        text: "Log out", //index 2 for reference
+        icon: LogOut,
+        location: "#",
+      },
+    ],
     FORGET_PASSWORD: {
       MULTISTEP_FORM: {
         STEPS: {
@@ -70,6 +93,34 @@ export const APP_STRINGS = {
         },
       },
     },
+    SIDEBAR_MENU: [
+      {
+        title: "Home",
+        url: "#",
+        icon: Home,
+        isActive: true,
+      },
+      {
+        title: "Inbox",
+        url: "#",
+        icon: Inbox,
+      },
+      {
+        title: "Calendar",
+        url: "#",
+        icon: Calendar,
+      },
+      {
+        title: "Search",
+        url: "#",
+        icon: Search,
+      },
+      {
+        title: "Settings",
+        url: "#",
+        icon: Settings,
+      },
+    ],
   },
   ERRORS: {
     COMMON: {

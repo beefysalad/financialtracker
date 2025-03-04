@@ -1,4 +1,5 @@
 import { randomBytes } from "crypto";
+import { auth } from "./auth";
 export const isEmptyString = (value: string): boolean => {
   return value === "" ? true : false;
 };
@@ -34,4 +35,9 @@ export const isRestrictionOver = (
 
   const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
   return restrictedDate <= fiveMinutesAgo;
+};
+
+export const isUserLoggedIn = async (): Promise<boolean> => {
+  const session = await auth();
+  return session && session.user ? true : false;
 };

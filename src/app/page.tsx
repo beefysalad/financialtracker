@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { logOut } from "@/lib/actions";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { ROUTES } from "./common/constants/route-pages";
@@ -13,9 +11,6 @@ export default async function Home() {
   return (
     <>
       <div>hello {session.user?.name}</div>
-      <Button onClick={logOut} className='mt-5'>
-        Sign out
-      </Button>
     </>
   );
 }
