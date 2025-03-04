@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { logOut } from "@/lib/actions";
-import { auth } from "@/lib/auth";
 import { getFirstLetter } from "@/lib/helper";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
