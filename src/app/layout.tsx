@@ -1,15 +1,14 @@
-import type React from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Geist, Azeret_Mono as Geist_Mono } from "next/font/google";
+import type React from "react";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Footer } from "./components/shared/Footer";
 import { Navbar } from "./components/shared/Navbar";
-import "./globals.css";
 import { AppSidebar } from "./components/shared/Sidebar";
-import SidebarTriggerCustom from "./components/shared/Sidebar/trigger";
-import CustomSidebarProvider from "./components/shared/Sidebar/Provider/CustomSidebarProvider";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +43,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <CustomSidebarProvider>
+            <SidebarProvider>
               <div className='flex h-screen w-full'>
                 <div className='flex-none'>
                   <AppSidebar />
@@ -52,7 +51,7 @@ export default function RootLayout({
 
                 <div className='flex flex-col flex-1 w-full'>
                   <Navbar />
-                  <SidebarTriggerCustom />
+
                   <main className='flex flex-col items-center justify-center w-full max-w-screen-lg mx-auto px-4 min-h-screen'>
                     {children}
                   </main>
@@ -62,7 +61,7 @@ export default function RootLayout({
               </div>
 
               <Toaster />
-            </CustomSidebarProvider>
+            </SidebarProvider>
           </ThemeProvider>
         </SessionProvider>
       </body>
