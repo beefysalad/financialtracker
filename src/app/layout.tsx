@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "./components/ThemeProvider";
-import { Navbar } from "./components/shared/Navbar";
-import { Footer } from "./components/shared/Footer";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
+import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
+import { Geist, Azeret_Mono as Geist_Mono } from "next/font/google";
+import type React from "react";
+import { ThemeProvider } from "./components/ThemeProvider";
+import { Footer } from "./components/shared/Footer";
+import { Navbar } from "./components/shared/Navbar";
+import { AppSidebar } from "./components/shared/Sidebar";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Financial Tracking App  | PTRCK.DEV",
+  title: "Budget Hive | Track your finances",
   description: "App to track financial transactions",
 };
 
@@ -40,12 +43,25 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            <main className='flex flex-col items-center justify-center w-full max-w-screen-lg mx-auto px-4 min-h-screen'>
-              {children}
-            </main>
-            <Toaster />
-            <Footer />
+            <SidebarProvider>
+              <div className='flex h-screen w-full'>
+                <div className='flex-none'>
+                  <AppSidebar />
+                </div>
+
+                <div className='flex flex-col flex-1 w-full'>
+                  <Navbar />
+
+                  <main className='flex flex-col items-center justify-center w-full max-w-screen-lg mx-auto px-4 min-h-screen'>
+                    {children}
+                  </main>
+
+                  <Footer />
+                </div>
+              </div>
+
+              <Toaster />
+            </SidebarProvider>
           </ThemeProvider>
         </SessionProvider>
       </body>
