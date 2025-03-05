@@ -76,7 +76,7 @@ const SignUpForm = ({
   const [loading, setLoading] = useState<boolean>(false);
   return (
     <div
-      className={cn("flex flex-col gap-6 items-center", className)}
+      className={cn("flex flex-col gap-6 items-center mt-40", className)}
       {...props}
     >
       <Card className='w-auto sm:w-96 p-6 sm:p-8'>

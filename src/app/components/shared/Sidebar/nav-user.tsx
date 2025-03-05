@@ -1,5 +1,6 @@
 "use client";
 import { APP_STRINGS } from "@/app/common/magic-strings";
+import { useSessionStore } from "@/app/store/useSession";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,9 +22,11 @@ interface IUser {
 }
 const NavUser = ({ name, image }: IUser) => {
   const router = useRouter();
+  const { removeSession } = useSessionStore();
   const handleClick = (text: string, location: string) => {
     // if value is logout then it should call the logout function
     if (text === APP_STRINGS.UI.PROFILE_DROPDOWN[2].text) {
+      removeSession();
       logOut();
     } else {
       router.push(location);

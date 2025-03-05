@@ -45,7 +45,9 @@ export function MultiStepForm() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const { toast } = useToast();
-
+  const handleCancel = () => {
+    redirect(ROUTES.AUTH.SIGN_IN);
+  };
   // Handle email submission
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -210,7 +212,7 @@ export function MultiStepForm() {
   };
 
   return (
-    <Card className='w-full max-w-md shadow-lg'>
+    <Card className='w-full max-w-md shadow-lg mt-40'>
       <CardHeader>
         <CardTitle>
           {(() => {
@@ -293,32 +295,42 @@ export function MultiStepForm() {
 
         {/* Step 1: Email */}
         {step === 1 && (
-          <form onSubmit={handleEmailSubmit} className='space-y-4'>
-            <div className='space-y-2'>
-              <Label htmlFor='email'>Email Address</Label>
-              <Input
-                id='email'
-                type='email'
-                placeholder='your.email@example.com'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <Button type='submit' className='w-full' disabled={loading}>
-              {loading ? (
-                <>
-                  {
-                    APP_STRINGS.UI.FORGET_PASSWORD.MULTISTEP_FORM.BUTTON
-                      .OTP_LOADING
-                  }
-                  <LoadingSpinner />
-                </>
-              ) : (
-                APP_STRINGS.UI.FORGET_PASSWORD.MULTISTEP_FORM.BUTTON
-                  .OTP_CONTINUE
-              )}
+          <>
+            {" "}
+            <form onSubmit={handleEmailSubmit} className='space-y-4'>
+              <div className='space-y-2'>
+                <Label htmlFor='email'>Email Address</Label>
+                <Input
+                  id='email'
+                  type='email'
+                  placeholder='your.email@example.com'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <Button type='submit' className='w-full' disabled={loading}>
+                {loading ? (
+                  <>
+                    {
+                      APP_STRINGS.UI.FORGET_PASSWORD.MULTISTEP_FORM.BUTTON
+                        .OTP_LOADING
+                    }
+                    <LoadingSpinner />
+                  </>
+                ) : (
+                  APP_STRINGS.UI.FORGET_PASSWORD.MULTISTEP_FORM.BUTTON
+                    .OTP_CONTINUE
+                )}
+              </Button>
+            </form>
+            <Button
+              className='w-full mt-2'
+              variant='outline'
+              onClick={handleCancel}
+            >
+              Cancel
             </Button>
-          </form>
+          </>
         )}
 
         {/* Step 2: OTP Verification */}

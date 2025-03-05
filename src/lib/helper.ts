@@ -41,3 +41,15 @@ export const isUserLoggedIn = async (): Promise<boolean> => {
   const session = await auth();
   return session && session.user ? true : false;
 };
+
+export const formatCurrency = (value: number, currency: string): string => {
+  return new Intl.NumberFormat("en-PH", {
+    style: "currency",
+    currency: currency,
+  }).format(value);
+};
+
+export const getFirstTwoNames = (fullName: string): string => {
+  const names = fullName.trim().split(/\s+/);
+  return names.length > 2 ? names.slice(0, 2).join(" ") : names[0];
+};

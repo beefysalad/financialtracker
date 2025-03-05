@@ -52,7 +52,7 @@ export default function RootLayout({
                 <div className='flex flex-col flex-1 w-full'>
                   <Navbar />
 
-                  <main className='flex flex-col items-center justify-center w-full max-w-screen-lg mx-auto px-4 min-h-screen'>
+                  <main className='flex flex-col items-center w-full mx-auto px-4 min-h-screen py-5'>
                     {children}
                   </main>
 
