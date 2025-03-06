@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/helper";
-import { Wallet } from "lucide-react";
 import React, { ElementType } from "react";
 interface IOverviewCards {
   title: string;

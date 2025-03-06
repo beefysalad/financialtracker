@@ -1,13 +1,12 @@
 "use client";
 import { useSessionStore } from "@/app/store/useSession";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { formatCurrency, getFirstTwoNames } from "@/lib/helper";
+import { getFirstTwoNames } from "@/lib/helper";
 import { CreditCard, PhilippinePeso, PiggyBank, Wallet } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import OverviewCards from "./OverviewCards";
 import OverviewChart from "./Chart";
+import OverviewCards from "./OverviewCards";
 
 const Dashboard = () => {
   const { session } = useSessionStore();

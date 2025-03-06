@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
-import { useSessionStore } from "../store/useSession";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useSessionStore } from "../store/useSession";
 
 const SyncSession = () => {
   const { data: session } = useSession();
