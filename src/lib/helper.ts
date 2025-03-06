@@ -42,10 +42,16 @@ export const isUserLoggedIn = async (): Promise<boolean> => {
   return session && session.user ? true : false;
 };
 
-export const formatCurrency = (value: number, currency: string): string => {
+export const formatCurrency = (
+  value: number,
+  currency: string,
+  withDecimals: boolean = true
+): string => {
   return new Intl.NumberFormat("en-PH", {
     style: "currency",
     currency: currency,
+    minimumFractionDigits: withDecimals ? 2 : 0, // Adds decimal places if true, otherwise 0 decimals
+    maximumFractionDigits: withDecimals ? 2 : 0, // Ensures no more than 2 decimals
   }).format(value);
 };
 

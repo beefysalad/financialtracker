@@ -1,3 +1,4 @@
+"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -9,15 +10,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { auth } from "@/lib/auth";
-import { isUserLoggedIn } from "@/lib/helper";
 import NavUser from "./nav-user";
 import { APP_STRINGS } from "@/app/common/magic-strings";
+import { useSessionStore } from "@/app/store/useSession";
 
-export async function AppSidebar() {
-  const session = await auth();
+export function AppSidebar() {
+  const { session } = useSessionStore();
   return (
-    (await isUserLoggedIn()) && (
+    session &&
+    session.user && (
       <Sidebar collapsible='icon'>
         <SidebarContent>
           <SidebarGroup>

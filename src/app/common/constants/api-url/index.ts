@@ -1,6 +1,7 @@
 export const API = {
   AUTH: {
     SIGN_UP: "auth/signup",
+    SESSION: "auth/session",
   },
   SEND_EMAIL: {
     FORGOT_PASSWORD: {
