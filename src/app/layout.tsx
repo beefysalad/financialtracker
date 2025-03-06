@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Geist, Azeret_Mono as Geist_Mono } from "next/font/google";
 import type React from "react";
+import SyncSession from "./components/SyncSession";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { Footer } from "./components/shared/Footer";
 import { Navbar } from "./components/shared/Navbar";
 import { AppSidebar } from "./components/shared/Sidebar";
 import "./globals.css";
@@ -52,13 +52,12 @@ export default function RootLayout({
                 <div className='flex flex-col flex-1 w-full'>
                   <Navbar />
 
-                  <main className='flex flex-col items-center justify-center w-full max-w-screen-lg mx-auto px-4 min-h-screen'>
+                  <main className='flex flex-col items-center w-full mx-auto px-4 min-h-screen py-5'>
                     {children}
                   </main>
-
-                  <Footer />
                 </div>
               </div>
+              <SyncSession />
 
               <Toaster />
             </SidebarProvider>
